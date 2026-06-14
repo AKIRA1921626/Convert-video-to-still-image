@@ -1,0 +1,24 @@
+--information:動画の時間を指定して、そこを静止画として表示するだけのスクリプト。
+--file@path:動画ファイル
+--track@time:固定する時間(秒),0,4000,0,0.01
+--check@monochromatic:単色化,0
+--check@mosaic:モザイク,0
+--check@sharp:シャープ,0
+
+if not obj.load("movie", path, time) then
+    return
+else
+    obj.load("movie", path, time)
+end
+
+if monochromatic ~= 0 then
+    obj.effect("単色化","強さ",100.0,"色","ffffff","輝度を保持する",1)
+end
+
+if mosaic ~= 0 then
+    obj.effect("モザイク","サイズ",50,"タイル風",0)
+end
+
+if sharp ~= 0 then
+    obj.effect("シャープ","強さ",300.0,"範囲",5)
+end
